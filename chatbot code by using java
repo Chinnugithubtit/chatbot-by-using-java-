@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class Chatbot {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Hi! I'm a chatbot. How can I assist you today?");
+        
+        while (true) {
+            String userInput = scanner.nextLine().toLowerCase().trim();
+            
+            if (userInput.equals("bye")) {
+                System.out.println("Goodbye! Have a great day!");
+                break;
+            }
+            
+            String response = generateResponse(userInput);
+            System.out.println(response);
+        }
+        
+        scanner.close();
+    }
+    
+    public static String generateResponse(String userInput) {
+        String response;
+        
+        // Simple responses based on user input
+        if (userInput.contains("hello") || userInput.contains("hi")) {
+            response = "Hello! How can I help you?";
+        } else if (userInput.contains("how are you")) {
+            response = "I'm just a bot, but I'm here to assist you!";
+        } else if (userInput.contains("thank you") || userInput.contains("thanks")) {
+            response = "You're welcome!";
+        } else {
+            // Default response for unknown queries
+            response = "I'm sorry, I don't understand. Can you please rephrase?";
+        }
+        
+        return response;
+    }
+}
